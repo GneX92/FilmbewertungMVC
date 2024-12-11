@@ -1,0 +1,52 @@
+﻿@model IEnumerable<Film>
+
+@{
+    ViewData["Title"] = "Film Bewertung";
+}
+
+<fieldset>
+    <legend>Stimmen Sie für einen Titel ab:</legend>
+
+    <form method="post" action="/Home/Wertung">
+
+        <section>
+            <select name="FilmId" size="1" required>
+                <option disabled selected value="">Wählen Sie einen Titel aus...</option>
+                @foreach (var film in Model)
+                {
+                    <option value="@film.Id">@film.Titel</option>
+                }
+            </select>
+        </section>
+        <br />
+        <section>
+            <input type="radio" name="Note" value="sehr gut" required id="one" />
+            <label for="one">Sehr gut </label>
+            <br />
+
+            <input type="radio" name="Note" value="gut" required id="two" />
+            <label for="two">Gut </label>
+            <br />
+
+            <input type="radio" name="Note" value="befriedigend" required id="three" />
+            <label for="three">Befriedigend </label>
+            <br />
+
+            <input type="radio" name="Note" value="ausreichend" required id="four" />
+            <label for="four">Ausreichend </label>
+            <br />
+
+            <input type="radio" name="Note" value="mangelhaft" required id="five" />
+            <label for="five">Mangelhaft </label>
+            <br />
+
+            <input type="radio" name="Note" value="ungenügend" required id="six" />
+            <label for="six">Ungenügend </label>
+            <br />
+        </section>
+
+        <section>
+            <input type="submit" />
+        </section>
+    </form>
+</fieldset>

@@ -1,0 +1,34 @@
+﻿@model Film
+@{
+    ViewData["Title"] = "Wertung";
+}
+
+<h1>Wertung</h1>
+
+<h5>Ergebnis für den Titel @Model.Titel</h5>
+<table border="1">
+    <thead>
+        <tr>
+            <th>
+                Note
+            </th>
+            <th>
+                Stimmen
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.FilmAbstimmung.GroupBy(fa => fa.Note))
+        {
+            <tr>
+                <td>
+                    @item.Key
+                </td>
+                <td>
+                    @item.Count()
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a href="Index">Zurück zur Bewertung</a>
